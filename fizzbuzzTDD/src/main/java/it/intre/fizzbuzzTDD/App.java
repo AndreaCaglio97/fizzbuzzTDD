@@ -1,4 +1,5 @@
 package it.intre.fizzbuzzTDD;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class App {
@@ -7,7 +8,7 @@ public class App {
 
     public static void main( String[] args )
     {
-        int number=checkValidInput();
+        int number = checkValidInput();
         fromInputToOne(number);
     }
 
@@ -22,13 +23,23 @@ public class App {
 
     public static int checkValidInput()
     {
-        int number;
+        int number = 0;
+        boolean isANumber = false;
         System.out.println("Insert a positive integer: ");
         do
         {
-            number = keyboard.nextInt();
-            if(number < 1)
-                System.out.println("ERROR! The number must be positive! Insert it again: ");
+            try{
+                number = keyboard.nextInt();
+                isANumber = true;
+            }catch(InputMismatchException e)
+            {
+                keyboard.nextLine();
+            }
+            if(!isANumber)
+                System.out.println("ERROR! You must not insert a string! Insert a positive integer: ");
+            else
+                if(number < 1)
+                    System.out.println("ERROR! The number must be positive! Insert it again: ");
         }while(number < 1);
         return number;
     }

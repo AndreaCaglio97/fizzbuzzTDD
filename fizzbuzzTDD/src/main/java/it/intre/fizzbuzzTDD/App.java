@@ -8,7 +8,7 @@ public class App {
 
     public static void main( String[] args )
     {
-        int number = checkValidInput();
+        int number = inputNumber();
         fromInputToOne(number);
     }
 
@@ -21,27 +21,39 @@ public class App {
         }
     }
 
-    public static int checkValidInput()
+    public static int inputNumber()
     {
         int number = 0;
-        boolean isANumber = false;
+        boolean validInput;
         System.out.println("Insert a positive integer: ");
         do
         {
             try{
                 number = keyboard.nextInt();
-                isANumber = true;
             }catch(InputMismatchException e)
             {
                 keyboard.nextLine();
+                number = -1;
+            }finally{
+                validInput = checkValidInput(number);
             }
-            if(!isANumber)
-                System.out.println("ERROR! You must not insert a string! Insert a positive integer: ");
-            else
-                if(number < 1)
-                    System.out.println("ERROR! The number must be positive! Insert it again: ");
-        }while(number < 1);
+        }while(!validInput);
         return number;
+    }
+
+    public static boolean checkValidInput(int number)
+    {
+        boolean check;
+        if(number < 1)
+        {
+            System.out.println("ERROR! Invalid input! Insert a positive integer: ");
+            check = false;
+        }
+        else
+        {
+            check = true;
+        }
+        return check;
     }
 
     public static String outputMaker(int number)

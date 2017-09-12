@@ -78,4 +78,28 @@ public class AppTest {
     {
         assertEquals("number: 7 output: 7",outputMaker(7));
     }
+
+    @Test
+    public void number0GivenInInputTest()
+    {
+        assertEquals(false,checkValidInput(0));
+    }
+
+    @Test
+    public void stringGivenInInputTest()
+    {
+        assertEquals(false,checkValidInput(-1));
+    }
+
+    @Test
+    public void negativeNumberGivenInInputTest()
+    {
+        assertEquals(false,checkValidInput(-5));
+    }
+
+    @Test
+    public void positiveNumberGivenInInputTest()
+    {
+        assertEquals(true,checkValidInput(20));
+    }
 }

@@ -82,24 +82,24 @@ public class AppTest {
     @Test
     public void number0GivenInInputTest()
     {
-        assertEquals(false,checkValidInput(0));
+        assertFalse(checkValidInput(0));
     }
 
     @Test
     public void stringGivenInInputTest()
     {
-        assertEquals(false,checkValidInput(-1));
+        assertFalse(checkValidInput(-1));
     }
 
     @Test
     public void negativeNumberGivenInInputTest()
     {
-        assertEquals(false,checkValidInput(-5));
+        assertFalse(checkValidInput(-5));
     }
 
     @Test
     public void positiveNumberGivenInInputTest()
     {
-        assertEquals(true,checkValidInput(20));
+        assertTrue(checkValidInput(20));
     }
 }
